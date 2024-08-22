@@ -1,0 +1,4 @@
+site_name: "My Household: Self-hosted household management tool"
+site_url: https://www.myhousehold.app
+theme:
+  name: material
