@@ -14,14 +14,13 @@ export const isAuthenticated = async (): Promise<boolean> => {
 			.collection(col)
 			.authRefresh()
 			.then(() => true)
-			.catch(() => false);
+			.catch(() => {
+				pb.authStore.clear();
+				return false;
+			});
 	}
 
 	return new Promise<boolean>(() => false);
-};
-
-export const authRefresh = async () => {
-	return pb.collection(col).authRefresh();
 };
 
 export const logout = async () => {
