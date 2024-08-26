@@ -13,6 +13,9 @@
 <nav>
 	<ul>
 		<li><a href="/dashboard">Dashboard</a></li>
+		{#if isAdmin}
+			<li><a href="/users">Users</a></li>
+		{/if}
 		<!-- svelte-ignore a11y-invalid-attribute -->
 		<li><a href="#" on:click={doLogout}>Logout</a></li>
 	</ul>
