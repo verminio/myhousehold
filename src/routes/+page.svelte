@@ -41,18 +41,11 @@
 			<p>Already authenticated, go ahead to the <a href="/dashboard">Dashboard</a>.</p>
 		{:else}
 			<form method="POST" on:submit|preventDefault={login}>
-				<label>
-					Email
-					<input name="email" type="email" />
-				</label>
-				<label>
-					Password
-					<input name="password" type="password" />
-				</label>
-				<label>
-					Admin
-					<input name="admin" type="checkbox" />
-				</label>
+				<label for="email">Email</label>
+				<input name="email" type="email" />
+				<label for="password">Password</label>
+				<input name="password" type="password" />
+				<label><input name="admin" type="checkbox" /> Admin</label>
 				<button>Log in</button>
 			</form>
 		{/if}
@@ -69,10 +62,32 @@
 
 	#login {
 		width: 33%;
+		background-color: $primary-lighter;
+		border-radius: 20px;
+	}
+
+	header {
+		background-color: $primary-darker;
+		height: 4em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 20px 20px 0px 0px;
+	}
+
+	label {
+		margin: 10px 0 0 0;
 	}
 
 	form {
+		padding: 25px;
+		margin: 0px 20px 0 20px;
 		display: flex;
 		flex-direction: column;
+	}
+
+	form > button {
+		margin: 20px 0 0 0;
+		align-self: center;
 	}
 </style>
