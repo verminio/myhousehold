@@ -1,5 +1,13 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Header from '$lib/components/Header.svelte';
+	import { currentUser } from '$lib/pocketbase';
+
+	currentUser.subscribe((user) => {
+		if (!user) {
+			goto('/');
+		}
+	})
 </script>
 
 <svelte:head>
