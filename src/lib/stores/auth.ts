@@ -1,4 +1,3 @@
-import '$lib/pocketbase';
 import { pb } from '$lib/pocketbase';
 
 const col: string = 'users';

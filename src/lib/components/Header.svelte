@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto, invalidateAll } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { pb } from '$lib/pocketbase';
 	import { logout } from '$lib/stores/auth';
 
@@ -7,11 +7,7 @@
 	$: isAuthenticated = pb.authStore.isValid;
 
 	const doLogout = () => {
-		logout().then(() => {
-			invalidateAll().then(() => {
-				goto('/');
-			});
-		});
+		logout().then(() => goto('/'));
 	};
 </script>
 
