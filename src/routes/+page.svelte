@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto, invalidateAll } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { pb } from '$lib/pocketbase';
 	import '$lib/stores/auth';
 	import { adminLogin, isAuthenticated, logout, usernameAndPasswordLogin } from '$lib/stores/auth';
