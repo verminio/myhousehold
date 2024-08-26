@@ -14,7 +14,24 @@
 <header>
 	<h1>My Household</h1>
 
-	{#if isAuthenticated}
-		<button on:click={doLogout}>Logout</button>
-	{/if}
+	<section class="actions">
+		{#if isAuthenticated}
+			<button on:click={doLogout}>Logout</button>
+		{/if}
+	</section>
 </header>
+
+<style lang="scss">
+	header {
+		display: flex;
+		flex-direction: row;
+		height: 4em;
+		align-items: center;
+		padding: 0px 15px 0px 15px;
+		background-color: $primary;
+	}
+
+	.actions {
+		margin-left: auto;
+	}
+</style>
