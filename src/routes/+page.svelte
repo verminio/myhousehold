@@ -4,6 +4,8 @@
 	import { adminLogin, isAuthenticated, logout, usernameAndPasswordLogin } from '$lib/stores/auth';
 	import { onMount } from 'svelte';
 
+	const year = new Date().getFullYear()
+
 	let hasValidToken: boolean = false;
 	onMount(async () => {
 		isAuthenticated().then((val: boolean) => {
@@ -49,6 +51,7 @@
 				<button>Log in</button>
 			</form>
 		{/if}
+		<footer><a href="https://myhousehold.app/">MyHousehold.app</a> - { year }</footer>
 	</section>
 </main>
 
@@ -75,12 +78,19 @@
 		border-radius: 20px 20px 0px 0px;
 	}
 
+	footer {
+		text-align: center;
+		font-size: 0.9em;
+		border-top: 1px solid $primary-darker;
+		height: 2em;
+	}
+
 	label {
 		margin: 10px 0 0 0;
 	}
 
 	form {
-		padding: 25px;
+		padding: 25px 25px 15px 25px;
 		margin: 0px 20px 0 20px;
 		display: flex;
 		flex-direction: column;

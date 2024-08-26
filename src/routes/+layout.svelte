@@ -1,5 +1,8 @@
+<svelte:head>
+	<title>My Household</title>
+</svelte:head>
+
 <slot />
-<footer>Footer</footer>
 
 <style lang="scss">
 	@import '../styles/variables.scss';
