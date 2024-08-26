@@ -4,7 +4,7 @@
 	import { adminLogin, isAuthenticated, logout, usernameAndPasswordLogin } from '$lib/stores/auth';
 	import { onMount } from 'svelte';
 
-	const year = new Date().getFullYear()
+	const year = new Date().getFullYear();
 
 	let hasValidToken: boolean = false;
 	onMount(async () => {
@@ -24,7 +24,7 @@
 		const admin = data.get('admin');
 		if (email && password) {
 			if (admin) {
-				adminLogin(email.toString(), password.toString()).then(() => goto('/admin'));
+				adminLogin(email.toString(), password.toString()).then(() => goto('/dashboard'));
 			} else {
 				usernameAndPasswordLogin(email.toString(), password.toString()).then(() =>
 					goto('/dashboard')
@@ -51,7 +51,7 @@
 				<button>Log in</button>
 			</form>
 		{/if}
-		<footer><a href="https://myhousehold.app/">MyHousehold.app</a> - { year }</footer>
+		<footer><a href="https://myhousehold.app/">MyHousehold.app</a> - {year}</footer>
 	</section>
 </main>
 

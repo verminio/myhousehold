@@ -8,11 +8,8 @@
 
 	onMount(async () => {
 		currentUser.subscribe((user) => {
-			if (
-				user == null ||
-				user == undefined ||
-				(user !== null && user !== undefined && !pb.authStore.isValid)
-			) {
+			const isLoggedIn: boolean = user !== null && user !== undefined;
+			if (!isLoggedIn || (isLoggedIn && !pb.authStore.isValid)) {
 				goto('/');
 			}
 		});
@@ -23,33 +20,29 @@
 	<title>My Household</title>
 </svelte:head>
 
-<Header />
-<main>
-	<aside class="nav">
+<div id="content">
+	<div id="sidebar">
+		<Header />
 		<AppNav />
-	</aside>
-	<section class="content">
+		<Footer />
+	</div>
+	<main>
 		<slot />
-	</section>
-</main>
-<Footer />
+	</main>
+</div>
 
 <style lang="scss">
-	main {
+	#content {
 		display: flex;
 		flex-direction: row;
-		gap: 10px;
 		flex-grow: 1;
 	}
-
-	aside.nav {
-		flex: 0 1 auto;
-		min-width: 15%;
-		background-color: $primary-lighter;
+	#sidebar {
+		display: flex;
+		flex-direction: column;
 	}
-
-	section.content {
-		flex: 2 1 auto;
+	main {
+		padding: 4em 0 0 2em;
 	}
 
 	@media (max-width: 854px) {
