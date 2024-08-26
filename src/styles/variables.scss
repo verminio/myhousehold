@@ -1,9 +1,21 @@
-$bg-color: #FBFBFE;
-$primary: #006D77;
-$secondary: #83C5BE;
-$accent: #EDF6F9;
+$bg-color: #fcfafa;
+$primary: #c8d3d5;
+$secondary: #6e8387;
+$accent: #1d3557;
+$text: #050315;
+
+$bg-color-dark: #0d1821;
+$primary-dark: #344966;
+$secondary-dark: #b4cded;
+$accent-dark: #f0f4ef;
+$text-dark: #FCFAFA;
+
+$background-darker: darken($bg-color, 25%);
+$primary-darker: darken($primary, 10%);
+$primary-lighter: lighten($primary, 10%);
 
 :root {
     font-family: 'Inter', sans-serif;
+    color: $text;
     background-color: $bg-color;
 }

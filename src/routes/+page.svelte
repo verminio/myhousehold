@@ -4,6 +4,8 @@
 	import { adminLogin, isAuthenticated, logout, usernameAndPasswordLogin } from '$lib/stores/auth';
 	import { onMount } from 'svelte';
 
+	const year = new Date().getFullYear();
+
 	let hasValidToken: boolean = false;
 	onMount(async () => {
 		isAuthenticated().then((val: boolean) => {
@@ -22,7 +24,7 @@
 		const admin = data.get('admin');
 		if (email && password) {
 			if (admin) {
-				adminLogin(email.toString(), password.toString()).then(() => goto('/admin'));
+				adminLogin(email.toString(), password.toString()).then(() => goto('/dashboard'));
 			} else {
 				usernameAndPasswordLogin(email.toString(), password.toString()).then(() =>
 					goto('/dashboard')
@@ -41,21 +43,15 @@
 			<p>Already authenticated, go ahead to the <a href="/dashboard">Dashboard</a>.</p>
 		{:else}
 			<form method="POST" on:submit|preventDefault={login}>
-				<label>
-					Email
-					<input name="email" type="email" />
-				</label>
-				<label>
-					Password
-					<input name="password" type="password" />
-				</label>
-				<label>
-					Admin
-					<input name="admin" type="checkbox" />
-				</label>
+				<label for="email">Email</label>
+				<input name="email" type="email" />
+				<label for="password">Password</label>
+				<input name="password" type="password" />
+				<label><input name="admin" type="checkbox" /> Admin</label>
 				<button>Log in</button>
 			</form>
 		{/if}
+		<footer><a href="https://myhousehold.app/">MyHousehold.app</a> - {year}</footer>
 	</section>
 </main>
 
@@ -69,10 +65,39 @@
 
 	#login {
 		width: 33%;
+		background-color: $primary-lighter;
+		border-radius: 20px;
+	}
+
+	header {
+		background-color: $primary-darker;
+		height: 4em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 20px 20px 0px 0px;
+	}
+
+	footer {
+		text-align: center;
+		font-size: 0.9em;
+		border-top: 1px solid $primary-darker;
+		height: 2em;
+	}
+
+	label {
+		margin: 10px 0 0 0;
 	}
 
 	form {
+		padding: 25px 25px 15px 25px;
+		margin: 0px 20px 0 20px;
 		display: flex;
 		flex-direction: column;
+	}
+
+	form > button {
+		margin: 20px 0 0 0;
+		align-self: center;
 	}
 </style>
