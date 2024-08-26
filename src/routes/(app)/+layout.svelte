@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import Header from '$lib/components/Header.svelte';
-	import { currentUser } from '$lib/pocketbase';
+	import { currentUser, pb } from '$lib/pocketbase';
+	import { onMount } from 'svelte';
 
-	currentUser.subscribe((user) => {
-		if (!user) {
-			goto('/');
-		}
-	})
+	onMount(async () => {
+		currentUser.subscribe((user) => {
+			if (
+				user == null ||
+				user == undefined ||
+				(user !== null && user !== undefined && !pb.authStore.isValid)
+			) {
+				goto('/');
+			}
+		});
+	});
 </script>
 
 <svelte:head>
@@ -15,7 +22,7 @@
 </svelte:head>
 
 <main>
-    <Header />
+	<Header />
 	<slot />
 </main>
 

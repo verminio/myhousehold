@@ -16,7 +16,7 @@ export const isAuthenticated = async (): Promise<boolean> => {
 			.then(() => true)
 			.catch(() => {
 				pb.authStore.clear();
-				return false;
+				return false
 			});
 	}
 
