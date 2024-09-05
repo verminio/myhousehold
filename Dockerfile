@@ -7,13 +7,13 @@ RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBAS
 
 FROM node:22.8.0-alpine3.20 AS builder
 
-ADD . /build
-WORKDIR /build
+ADD . /myhousehold
+WORKDIR /myhousehold
 
 ENV PUBLIC_POCKETBASE_HOST=""
 
 RUN npm install && npm run build \ 
- && tar -C /build/.svelte-kit/output/client -cvvf /build/app.tar .
+ && tar -C /myhousehold/build -cvvf /myhousehold/app.tar .
 
 
 FROM alpine:3.20
@@ -22,7 +22,7 @@ RUN mkdir -p /app/pb_public
 WORKDIR /app
 
 COPY --from=downloader /pocketbase /usr/local/bin/pocketbase
-COPY --from=builder /build/app.tar /app/app.tar
+COPY --from=builder /myhousehold/app.tar /app/app.tar
 
 RUN tar -xf /app/app.tar -C /app/pb_public && rm /app/app.tar
 ADD migrations /app/pb_migrations
