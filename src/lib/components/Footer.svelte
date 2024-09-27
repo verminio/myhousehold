@@ -2,18 +2,8 @@
 	import { currentUser, pb } from "$lib/pocketbase";
 
 	const year = new Date().getFullYear();
-	let userLabel: string = '';
-
-	currentUser.subscribe((auth) => {
-		if (pb.authStore.isAdmin) {
-			userLabel = 'Admin';
-		} else if (auth) {
-			userLabel = auth.name;
-		}
-	});
 </script>
 
-<div class="user">Logged in as {userLabel}</div>
 <footer>
 	<a href="https://myhousehold.app/">MyHousehold.app</a> - {year}
 </footer>
