@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import AppNav from '$lib/components/AppNav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import { currentUser, pb } from '$lib/pocketbase';
@@ -20,16 +19,12 @@
 	<title>My Household</title>
 </svelte:head>
 
-<div id="content">
-	<div id="sidebar">
-		<Header />
-		<AppNav />
-		<Footer />
-	</div>
-	<main>
-		<slot />
-	</main>
-</div>
+
+<Header />
+<main>
+	<slot />
+</main>
+<Footer />
 
 <style lang="scss">
 	#content {
