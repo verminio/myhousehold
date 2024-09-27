@@ -26,6 +26,8 @@ migrate((db) => {
     options: {}
   });
   dao.saveCollection(expenseTypes);
+  dao.saveRecord(new Record(expenseTypes, { "type": "Investment" }));
+  dao.saveRecord(new Record(expenseTypes, { "type": "Subscription" }));
 }, (db) => {
   const dao = new Dao(db);
   const expenseTypes = dao.findCollectionByNameOrId("expense_types");
