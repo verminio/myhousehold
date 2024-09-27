@@ -27,17 +27,10 @@
 <Footer />
 
 <style lang="scss">
-	#content {
+	main {
 		display: flex;
 		flex-direction: row;
 		flex-grow: 1;
-	}
-	#sidebar {
-		display: flex;
-		flex-direction: column;
-	}
-	main {
-		padding: 4em 0 0 2em;
 	}
 
 	@media (max-width: 854px) {

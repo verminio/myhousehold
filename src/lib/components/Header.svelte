@@ -57,6 +57,7 @@
 		text-decoration: none;
 		font-size: 1.1em;
 		display: block;
+		padding: 0.5em 1em;
 	}
 
 	a:hover,
@@ -66,6 +67,6 @@
 	}
 
 	li:hover {
-		background: $primary;
+		background: lighten($primary, 20%);
 	}
 </style>

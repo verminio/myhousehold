@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { currentUser, pb } from "$lib/pocketbase";
-
 	const year = new Date().getFullYear();
 </script>
 
@@ -18,12 +16,5 @@
 		align-items: center;
 		justify-content: center;
 		border-top: 1px solid $primary-darker;
-	}
-
-	.user {
-		height: 1.5em;
-		text-align: center;
-		background-color: $primary-lighter;
-		font-size: 0.9em;		
 	}
 </style>
